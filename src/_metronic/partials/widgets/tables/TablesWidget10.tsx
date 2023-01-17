@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import { KTSVG, toAbsoluteUrl } from '../../../helpers'
 
 type Props = {
   className: string
 }
 
-const TablesWidget10: React.FC<Props> = ({className}) => {
+const TablesWidget10: React.FC<Props> = ({ className }) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -25,10 +25,10 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
           <a
             href='#'
             className='btn btn-sm btn-light-primary'
-            // data-bs-toggle='modal'
-            // data-bs-target='#kt_modal_invite_friends'
+          // data-bs-toggle='modal'
+          // data-bs-target='#kt_modal_invite_friends'
           >
-            <KTSVG path='media/icons/duotune/arrows/arr075.svg' className='svg-icon-3' />
+            <KTSVG path='/media/icons/duotune/arrows/arr075.svg' className='svg-icon-3' />
             New Member
           </a>
         </div>
@@ -101,7 +101,7 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                       <div
                         className='progress-bar bg-primary'
                         role='progressbar'
-                        style={{width: '50%'}}
+                        style={{ width: '50%' }}
                       ></div>
                     </div>
                   </div>
@@ -173,7 +173,7 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                       <div
                         className='progress-bar bg-danger'
                         role='progressbar'
-                        style={{width: '70%'}}
+                        style={{ width: '70%' }}
                       ></div>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                       <div
                         className='progress-bar bg-success'
                         role='progressbar'
-                        style={{width: '60%'}}
+                        style={{ width: '60%' }}
                       ></div>
                     </div>
                   </div>
@@ -313,7 +313,7 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                       <div
                         className='progress-bar bg-warning'
                         role='progressbar'
-                        style={{width: '50%'}}
+                        style={{ width: '50%' }}
                       ></div>
                     </div>
                   </div>
@@ -383,7 +383,7 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                       <div
                         className='progress-bar bg-info'
                         role='progressbar'
-                        style={{width: '90%'}}
+                        style={{ width: '90%' }}
                       ></div>
                     </div>
                   </div>
@@ -429,4 +429,4 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
   )
 }
 
-export {TablesWidget10}
+export { TablesWidget10 }

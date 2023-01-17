@@ -1,32 +1,32 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
-import {useIntl} from 'react-intl'
-import {KTSVG} from '../../../../helpers'
-import {SidebarMenuItemWithSub} from './SidebarMenuItemWithSub'
-import {SidebarMenuItem} from './SidebarMenuItem'
+import { useIntl } from 'react-intl'
+import { KTSVG } from '../../../../helpers'
+import { SidebarMenuItemWithSub } from './SidebarMenuItemWithSub'
+import { SidebarMenuItem } from './SidebarMenuItem'
 
 const SidebarMenuMain = () => {
   const intl = useIntl()
 
   return (
     <>
-      
+
       <SidebarMenuItemWithSub
         to='/dashboard'
-        title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
+        title={intl.formatMessage({ id: 'MENU.DASHBOARD' })}
         fontIcon='bi-app-indicator'
         icon='/media/icons/duotune/art/art002.svg'
       >
         <SidebarMenuItem
-        to='/dashboard/sales'
-        icon='/media/icons/duotune/art/art002.svg'
-        title={intl.formatMessage({id: 'MENU.DASHBOARD.SALES'})}
-        fontIcon='bi-app-indicator'
-      />
+          to='/dashboard/sales'
+          icon='/media/icons/duotune/art/art002.svg'
+          title={intl.formatMessage({ id: 'MENU.DASHBOARD.SALES' })}
+          fontIcon='bi-app-indicator'
+        />
 
       </SidebarMenuItemWithSub>
       ------------
-      
+
       <SidebarMenuItem
         to='/builder'
         icon='/media/icons/duotune/general/gen019.svg'
@@ -129,16 +129,16 @@ const SidebarMenuMain = () => {
         <a
           target='_blank'
           className='menu-link'
-          href={process.env.REACT_APP_PREVIEW_DOCS_URL + '/docs/changelog'}
+          href={import.meta.env.VITE_REACT_APP_PREVIEW_DOCS_URL + '/docs/changelog'}
         >
           <span className='menu-icon'>
             <KTSVG path='/media/icons/duotune/general/gen005.svg' className='svg-icon-2' />
           </span>
-          <span className='menu-title'>Changelog {process.env.REACT_APP_VERSION}</span>
+          <span className='menu-title'>Changelog {import.meta.env.VITE_REACT_APP_VERSION}</span>
         </a>
       </div>
     </>
   )
 }
 
-export {SidebarMenuMain}
+export { SidebarMenuMain }
