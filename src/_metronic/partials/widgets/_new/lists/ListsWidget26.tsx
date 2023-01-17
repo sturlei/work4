@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {Fragment} from 'react'
-import {KTSVG} from '../../../../helpers'
+import { Fragment } from 'react'
+import { KTSVG } from '../../../../helpers'
 
 type Props = {
   className: string
 }
 
-const rows: Array<{description: string}> = [
-  {description: 'Avg. Client Rating'},
-  {description: 'Instagram Followers'},
-  {description: 'Google Ads CPC'},
+const rows: Array<{ description: string }> = [
+  { description: 'Avg. Client Rating' },
+  { description: 'Instagram Followers' },
+  { description: 'Google Ads CPC' },
 ]
 
-const ListsWidget26 = ({className}: Props) => (
+const ListsWidget26 = ({ className }: Props) => (
   <div className={`card card-flush ${className}`}>
     <div className='card-header pt-5'>
       <h3 className='card-title text-gray-800 fw-bold'>External Links</h3>
@@ -29,7 +29,7 @@ const ListsWidget26 = ({className}: Props) => (
               type='button'
               className='btn btn-icon btn-sm h-auto btn-color-gray-400 btn-active-color-primary justify-content-end'
             >
-              <KTSVG path='media/icons/duotune/arrows/arr095.svg' className='svg-icon-2' />
+              <KTSVG path='/media/icons/duotune/arrows/arr095.svg' className='svg-icon-2' />
             </button>
           </div>
           {rows.length - 1 > index && <div className='separator separator-dashed my-3' />}
@@ -38,4 +38,4 @@ const ListsWidget26 = ({className}: Props) => (
     </div>
   </div>
 )
-export {ListsWidget26}
+export { ListsWidget26 }

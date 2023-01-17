@@ -1,10 +1,10 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 
 const DemosToggleDrawer: FC = () => (
   <button
     id='kt_engage_demos_toggle'
     className='engage-demos-toggle btn btn-flex h-35px bg-body btn-color-gray-700 btn-active-color-gray-900 shadow-sm fs-6 px-4 rounded-top-0'
-    title={`Check out ${process.env.REACT_APP_THEME_NAME} more demos`}
+    title={`Check out ${import.meta.env.VITE_REACT_APP_THEME_NAME} more demos`}
     data-bs-toggle='tooltip'
     data-bs-placement='left'
     data-bs-dismiss='click'
@@ -14,4 +14,4 @@ const DemosToggleDrawer: FC = () => (
   </button>
 )
 
-export {DemosToggleDrawer}
+export { DemosToggleDrawer }
