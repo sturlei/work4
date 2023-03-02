@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react'
+import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
-import { useFormik } from 'formik'
-import { getUserByToken, login } from '../core/_requests'
-import { toAbsoluteUrl } from '../../../../_metronic/helpers'
-import { useAuth } from '../core/Auth'
+import {Link} from 'react-router-dom'
+import {useFormik} from 'formik'
+import {getUserByToken, login} from '../core/_requests'
+import {toAbsoluteUrl} from '../../../../_metronic/helpers'
+import {useAuth} from '../core/Auth'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,12 +19,6 @@ const loginSchema = Yup.object().shape({
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
 })
-
-const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
-}
-
 /*
   Formik+YUP+Typescript:
   https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
@@ -33,18 +27,22 @@ const initialValues = {
 
 export function Login() {
   const [loading, setLoading] = useState(false)
-  const { saveAuth, setCurrentUser } = useAuth()
+  const {saveAuth, setCurrentUser} = useAuth()
 
   const formik = useFormik({
-    initialValues,
+    initialValues: {
+      email: 'sturlei94@gmailss.se',
+      password: 'Jasha',
+    },
     validationSchema: loginSchema,
-    onSubmit: async (values, { setStatus, setSubmitting }) => {
+    onSubmit: async (values, {setStatus, setSubmitting}) => {
       setLoading(true)
       try {
-        const { data: auth } = await login(values.email, values.password)
-        saveAuth(auth)
-        const { data: user } = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
+        const data = await login(values.email, values.password)
+
+        saveAuth(data?.data)
+        // const { data: user } = await getUserByToken(auth.api_token)
+        setCurrentUser(data?.data as any)
       } catch (error) {
         console.error(error)
         saveAuth(undefined)
@@ -126,10 +124,7 @@ export function Login() {
         </div>
       ) : (
         <div className='mb-10 bg-light-info p-8 rounded'>
-          <div className='text-info'>
-            Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
-            continue.
-          </div>
+          <div className='text-info'></div>
         </div>
       )}
 
@@ -141,7 +136,7 @@ export function Login() {
           {...formik.getFieldProps('email')}
           className={clsx(
             'form-control bg-transparent',
-            { 'is-invalid': formik.touched.email && formik.errors.email },
+            {'is-invalid': formik.touched.email && formik.errors.email},
             {
               'is-valid': formik.touched.email && !formik.errors.email,
             }
@@ -207,7 +202,7 @@ export function Login() {
         >
           {!loading && <span className='indicator-label'>Continue</span>}
           {loading && (
-            <span className='indicator-progress' style={{ display: 'block' }}>
+            <span className='indicator-progress' style={{display: 'block'}}>
               Please wait...
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>

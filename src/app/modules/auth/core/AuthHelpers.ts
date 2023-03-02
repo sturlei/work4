@@ -1,6 +1,8 @@
-import {AuthModel} from './_models'
+import { AuthModel } from './_models'
+import { logout } from './_requests'
 
-const AUTH_LOCAL_STORAGE_KEY = 'kt-auth-react-v'
+
+const AUTH_LOCAL_STORAGE_KEY = 'userData'
 const getAuth = (): AuthModel | undefined => {
   if (!localStorage) {
     return
@@ -12,7 +14,7 @@ const getAuth = (): AuthModel | undefined => {
   }
 
   try {
-    const auth: AuthModel = JSON.parse(lsValue) as AuthModel
+    const auth: AuthModel = JSON.parse(lsValue) as any
     if (auth) {
       // You can easily check auth_token expiration also
       return auth
@@ -28,8 +30,8 @@ const setAuth = (auth: AuthModel) => {
   }
 
   try {
-    const lsValue = JSON.stringify(auth)
-    localStorage.setItem(AUTH_LOCAL_STORAGE_KEY, lsValue)
+    const localStorageValue = JSON.stringify(auth)
+    localStorage.setItem(AUTH_LOCAL_STORAGE_KEY, localStorageValue)
   } catch (error) {
     console.error('AUTH LOCAL STORAGE SAVE ERROR', error)
   }
@@ -42,6 +44,9 @@ const removeAuth = () => {
 
   try {
     localStorage.removeItem(AUTH_LOCAL_STORAGE_KEY)
+    logout().catch((error) => {
+      console.error('AUTH LOGOUT ERROR', error)
+    })
   } catch (error) {
     console.error('AUTH LOCAL STORAGE REMOVE ERROR', error)
   }
@@ -50,7 +55,7 @@ const removeAuth = () => {
 export function setupAxios(axios: any) {
   axios.defaults.headers.Accept = 'application/json'
   axios.interceptors.request.use(
-    (config: {headers: {Authorization: string}}) => {
+    (config: { headers: { Authorization: string } }) => {
       const auth = getAuth()
       if (auth && auth.api_token) {
         config.headers.Authorization = `Bearer ${auth.api_token}`
@@ -62,4 +67,4 @@ export function setupAxios(axios: any) {
   )
 }
 
-export {getAuth, setAuth, removeAuth, AUTH_LOCAL_STORAGE_KEY}
+export { getAuth, setAuth, removeAuth, AUTH_LOCAL_STORAGE_KEY }
