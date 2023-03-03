@@ -21,6 +21,7 @@
     "dotenv": "^16.0.3",
     "formik": "2.2.9",
     "line-awesome": "1.3.0",
+    "lodash": "^4.17.21",
     "nouislider": "15.5.1",
     "postcss": "^8.4.21",
     "prism-react-renderer": "1.3.1",

@@ -4,9 +4,11 @@ import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import {Link} from 'react-router-dom'
 import {Dropdown1} from '../../../_metronic/partials'
 import {useLocation} from 'react-router-dom'
+import {useAuth} from '../../modules/auth/core/Auth'
 
 const ProfileHeader: React.FC = () => {
   const location = useLocation()
+  const {auth, logout, setCurrentUser, saveAuth} = useAuth()
 
   return (
     <div className='card mb-5 mb-xl-10'>
@@ -24,7 +26,7 @@ const ProfileHeader: React.FC = () => {
               <div className='d-flex flex-column'>
                 <div className='d-flex align-items-center mb-2'>
                   <a href='#' className='text-gray-800 text-hover-primary fs-2 fw-bolder me-1'>
-                    Max Smith
+                    {`${auth?.firstName} ${auth?.lastName}`}
                   </a>
                   <a href='#'>
                     <KTSVG
@@ -63,7 +65,7 @@ const ProfileHeader: React.FC = () => {
                       path='/media/icons/duotune/communication/com011.svg'
                       className='svg-icon-4 me-1'
                     />
-                    max@kt.com
+                    {auth?.email}
                   </a>
                 </div>
               </div>
